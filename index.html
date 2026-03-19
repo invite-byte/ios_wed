@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"/>
+  <meta name="apple-mobile-web-app-capable" content="yes"/>
+  <meta name="apple-mobile-web-app-status-bar-style" content="default"/>
+  <title>Aravind ❤️ Vidhya | Wedding Invitation</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;600;700&family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cormorant+Garamond:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --primary:#7b2d3a;
+      --secondary:#b56b76;
+      --bg:#f8f5f3;
+    }
+    html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;}
+    body{margin:0;font-family:"Montserrat",sans-serif;background:var(--bg);overflow-x:hidden;-webkit-overflow-scrolling:touch;}
+
+    /* ===== FLOATING HEARTS ===== */
+    .hearts{position:fixed;inset:0;pointer-events:none;z-index:9999;overflow:hidden;}
+    .heart{position:absolute;bottom:-20px;font-size:18px;opacity:0.75;
+      -webkit-animation:floatUp linear forwards;
+      animation:floatUp linear forwards;}
+    @-webkit-keyframes floatUp{from{-webkit-transform:translateY(0) scale(0.8);transform:translateY(0) scale(0.8);opacity:0.8;}to{-webkit-transform:translateY(-110vh) scale(1.5);transform:translateY(-110vh) scale(1.5);opacity:0;}}
+    @keyframes floatUp{from{transform:translateY(0) scale(0.8);opacity:0.8;}to{transform:translateY(-110vh) scale(1.5);opacity:0;}}
+
+    /* ===== SPARK ===== */
+    .spark{position:fixed;width:8px;height:8px;border-radius:50%;background:gold;z-index:99999;pointer-events:none;
+      -webkit-animation:spark 1s ease-out forwards;
+      animation:spark 1s ease-out forwards;}
+    @-webkit-keyframes spark{0%{-webkit-transform:scale(0.8);transform:scale(0.8);opacity:1;}100%{-webkit-transform:scale(8);transform:scale(8);opacity:0;}}
+    @keyframes spark{0%{transform:scale(0.8);opacity:1;}100%{transform:scale(8);opacity:0;}}
+
+    /* ===== TOP BUTTONS ===== */
+    .top-actions{position:fixed;right:14px;top:14px;display:-webkit-flex;display:flex;-webkit-flex-direction:column;flex-direction:column;gap:10px;z-index:999999;
+      /* Safe area for iPhone notch */
+      top:max(14px, env(safe-area-inset-top, 14px));
+      right:max(14px, env(safe-area-inset-right, 14px));
+    }
+    .action-btn{border:none;padding:10px 14px;border-radius:14px;font-weight:800;
+      box-shadow:0 12px 25px rgba(0,0,0,0.18);background:var(--primary);color:white;
+      -webkit-transition:0.25s;transition:0.25s;
+      -webkit-tap-highlight-color:transparent;
+      touch-action:manipulation;
+      cursor:pointer;}
+    .action-btn:hover{-webkit-transform:translateY(-2px);transform:translateY(-2px);background:#5e1f2b;}
+    .action-btn:active{-webkit-transform:scale(0.96);transform:scale(0.96);}
+
+    /* ===== COVER ===== */
+    .cover{position:fixed;inset:0;background:-webkit-linear-gradient(135deg,#fff,#fff5f7);background:linear-gradient(135deg,#fff,#fff5f7);
+      display:-webkit-flex;display:flex;-webkit-justify-content:center;justify-content:center;-webkit-align-items:center;align-items:center;
+      z-index:999999;
+      -webkit-transition:1s ease;transition:1s ease;}
+    .cover.hide{-webkit-transform:translateY(-120%);transform:translateY(-120%);opacity:0;pointer-events:none;}
+    .cover-card{width:min(920px,92vw);padding:55px 18px 90px;border-radius:26px;background:white;text-align:center;
+      box-shadow:0 18px 60px rgba(0,0,0,0.18);position:relative;overflow:hidden;}
+    .cover-title{font-family:"Dancing Script",cursive;letter-spacing:0.8px;font-size:clamp(40px,10vw,70px);color:var(--primary);margin:0;}
+    .cover-sub{margin-top:10px;color:#555;font-size:clamp(15px,4vw,20px);font-style:italic;font-weight:bold;}
+    .hint{margin-top:18px;font-weight:900;color:var(--primary);font-size:15px;opacity:0.85;}
+
+    /* ===== ROPE ===== */
+    .rope-wrap{position:absolute;left:50%;top:0;-webkit-transform:translateX(-50%);transform:translateX(-50%);
+      width:240px;height:100%;display:-webkit-flex;display:flex;
+      -webkit-justify-content:center;justify-content:center;
+      -webkit-align-items:flex-start;align-items:flex-start;
+      -webkit-user-select:none;user-select:none;touch-action:none;}
+    .rope{width:4px;height:220px;background:-webkit-linear-gradient(#caa16a,#8a5a2a);background:linear-gradient(#caa16a,#8a5a2a);
+      border-radius:99px;position:relative;-webkit-transition:0.05s linear;transition:0.05s linear;}
+    .rope::after{content:"";position:absolute;bottom:-12px;left:50%;-webkit-transform:translateX(-50%);transform:translateX(-50%);
+      width:18px;height:18px;border-radius:50%;background:#d9b17b;box-shadow:0 8px 15px rgba(0,0,0,0.15);}
+    .pull-ring{margin-top:220px;width:62px;height:62px;border-radius:20px;background:var(--primary);
+      display:-webkit-flex;display:flex;-webkit-justify-content:center;justify-content:center;-webkit-align-items:center;align-items:center;
+      color:white;font-size:28px;font-weight:900;
+      box-shadow:0 14px 30px rgba(0,0,0,0.25);-webkit-transition:0.05s linear;transition:0.05s linear;
+      cursor:grab;-webkit-tap-highlight-color:transparent;touch-action:none;-ms-touch-action:none;}
+    .pull-ring:active{cursor:grabbing;}
+    .progress-text{margin-top:10px;font-weight:700;color:#555;font-size:13px;}
+
+    /* ===== SECTIONS ===== */
+    .section{padding:85px 12px;}
+    .invite-box{max-width:1100px;margin:auto;background:white;border-radius:22px;padding:35px 18px;
+      box-shadow:0 15px 55px rgba(0,0,0,0.14);border:1px solid rgba(0,0,0,0.06);overflow:hidden;position:relative;}
+
+    /* ===== HEARTS PHOTO AREA ===== */
+    .hearts-photo-wrap{width:100%;background:#ffffff;border-radius:18px;padding:10px 10px 20px;position:relative;overflow:hidden;}
+    .hearts-svg-area{width:100%;display:block;max-width:520px;margin:0 auto;}
+
+    /* ===== PHOTO HEARTS — iPhone fix: use <image> tag not foreignObject ===== */
+    .heart-photo-container{
+      position:relative;
+      width:100%;
+      max-width:520px;
+      margin:0 auto;
+    }
+    /* Canvas-based approach for iOS compatibility */
+    .photo-hearts-row{
+      display:-webkit-flex;display:flex;
+      -webkit-justify-content:center;justify-content:center;
+      -webkit-align-items:flex-end;align-items:flex-end;
+      gap:0;
+      padding:10px 0 0;
+    }
+    .heart-photo-item{
+      position:relative;
+      display:-webkit-flex;display:flex;
+      -webkit-flex-direction:column;flex-direction:column;
+      -webkit-align-items:center;align-items:center;
+    }
+    /* Heart shape via CSS clip-path — works on all iOS Safari versions */
+    .heart-clip-wrap{
+      position:relative;
+      overflow:hidden;
+      -webkit-clip-path:url(#lClip);
+      clip-path:url(#lClip);
+    }
+    .heart-img-box{
+      position:relative;
+      border-radius:4px;
+      overflow:hidden;
+    }
+    /* Using SVG <image> element is more reliable on iOS than foreignObject */
+    .hearts-svg-area{width:100%;display:block;}
+
+    .hearts-names-row{display:-webkit-flex;display:flex;-webkit-justify-content:center;justify-content:center;-webkit-align-items:center;align-items:center;gap:20px;-webkit-flex-wrap:wrap;flex-wrap:wrap;margin-top:8px;}
+    .hn-box{text-align:center;}
+    .hn-name{font-family:'Cinzel',serif;font-size:17px;color:#cc0020;letter-spacing:3px;display:block;font-weight:600;}
+    .hn-role{font-family:'Cormorant Garamond',serif;font-size:11px;font-style:italic;color:rgba(180,0,30,0.5);letter-spacing:2px;display:block;margin-top:3px;}
+    .hn-amp{font-family:'Cormorant Garamond',serif;font-size:50px;font-style:italic;color:#cc0020;line-height:1;}
+
+    /* ===== COUNTDOWN ===== */
+    .countdown{display:-webkit-flex;display:flex;-webkit-justify-content:center;justify-content:center;gap:10px;-webkit-flex-wrap:wrap;flex-wrap:wrap;margin:18px 0 22px;}
+    .time-box{min-width:70px;padding:10px 12px;border-radius:16px;
+      background:-webkit-linear-gradient(180deg,#fff,#fff7f8);background:linear-gradient(180deg,#fff,#fff7f8);
+      border:1px solid rgba(0,0,0,0.06);box-shadow:0 10px 20px rgba(0,0,0,0.06);text-align:center;}
+    .time-box h2{margin:0;font-weight:900;color:var(--primary);font-size:clamp(20px,6vw,28px);}
+    .time-box p{margin:0;font-size:11px;color:#555;font-weight:700;letter-spacing:0.4px;}
+
+    /* ===== EVENT CARDS ===== */
+    .event-card{border-radius:16px;padding:18px;
+      background:-webkit-linear-gradient(180deg,#fff,#fff7f8);background:linear-gradient(180deg,#fff,#fff7f8);
+      border:1px solid rgba(0,0,0,0.06);box-shadow:0 10px 25px rgba(0,0,0,0.07);height:100%;}
+    .event-title{font-weight:bold;color:var(--primary);font-size:18px;margin-bottom:8px;}
+    .event-text{color:#444;font-size:14px;margin-bottom:6px;}
+    .wedding-premium{background:-webkit-linear-gradient(180deg,#ffffff,#fff6f7);background:linear-gradient(180deg,#ffffff,#fff6f7);border:1px solid rgba(123,45,58,0.15);}
+    .event-title-premium{font-family:"Dancing Script",cursive;font-size:clamp(26px,6vw,34px);font-weight:700;color:var(--primary);text-align:center;margin-bottom:14px;}
+    .event-line{display:-webkit-flex;display:flex;gap:10px;margin-bottom:10px;-webkit-align-items:flex-start;align-items:flex-start;font-family:"Montserrat",sans-serif;font-size:15px;line-height:1.7;}
+    .event-label{min-width:90px;font-weight:800;color:var(--primary);}
+    .event-value{font-weight:600;color:#444;}
+    .premium-divider{width:85%;height:2px;margin:18px auto;border-radius:99px;
+      background:-webkit-linear-gradient(90deg,transparent,var(--secondary),transparent);
+      background:linear-gradient(90deg,transparent,var(--secondary),transparent);opacity:0.7;}
+    .message-text{font-family:"Montserrat",sans-serif;font-size:14.5px;line-height:1.9;color:#444;text-align:center;font-weight:500;max-width:750px;margin:auto;}
+
+    /* ===== ACTION CARDS ===== */
+    .action-cards-grid{display:-webkit-flex;display:flex;-webkit-flex-wrap:wrap;flex-wrap:wrap;gap:14px;margin-top:16px;}
+    .action-card{display:-webkit-flex;display:flex;-webkit-align-items:center;align-items:center;gap:12px;
+      background:white;border-radius:18px;padding:14px 16px;
+      border:1px solid rgba(0,0,0,0.06);box-shadow:0 6px 20px rgba(0,0,0,0.07);
+      text-decoration:none;cursor:pointer;
+      -webkit-transition:all 0.22s ease;transition:all 0.22s ease;
+      position:relative;overflow:hidden;
+      -webkit-tap-highlight-color:transparent;
+      touch-action:manipulation;
+      /* Each card: approx half width minus gap */
+      width:calc(50% - 7px);
+      box-sizing:border-box;
+      text-align:left;border-top:none;}
+    .action-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;border-radius:18px 18px 0 0;}
+    .ac-map::before{background:#e8001a;}
+    .ac-wa::before{background:#25D366;}
+    .ac-cal::before{background:#ff9800;}
+    .ac-dl::before{background:#5c6bc0;}
+    .action-card:hover{-webkit-transform:translateY(-3px);transform:translateY(-3px);box-shadow:0 12px 30px rgba(0,0,0,0.12);text-decoration:none;}
+    .action-card:active{-webkit-transform:scale(0.97);transform:scale(0.97);}
+    .ac-icon-wrap{width:46px;height:46px;border-radius:14px;display:-webkit-flex;display:flex;-webkit-align-items:center;align-items:center;-webkit-justify-content:center;justify-content:center;font-size:22px;-webkit-flex-shrink:0;flex-shrink:0;}
+    .ac-content{-webkit-flex:1;flex:1;min-width:0;}
+    .ac-title{font-family:'Montserrat',sans-serif;font-size:13px;font-weight:800;color:#222;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+    .ac-sub{font-family:'Montserrat',sans-serif;font-size:10px;font-weight:500;color:#999;margin-top:2px;}
+    .ac-arrow{font-size:22px;font-weight:300;color:#ccc;-webkit-flex-shrink:0;flex-shrink:0;line-height:1;}
+
+    /* ===== DIVIDER ===== */
+    .divider-subtitle-wrap{max-width:680px;margin:0 auto 28px;text-align:center;}
+    .div-line-row{display:-webkit-flex;display:flex;-webkit-align-items:center;align-items:center;gap:12px;}
+    .div-line{-webkit-flex:1;flex:1;height:1px;background:-webkit-linear-gradient(90deg,transparent,#b56b76);background:linear-gradient(90deg,transparent,#b56b76);}
+    .div-line.right{background:-webkit-linear-gradient(90deg,#b56b76,transparent);background:linear-gradient(90deg,#b56b76,transparent);}
+    .div-orn{font-size:18px;color:#b56b76;line-height:1;opacity:0.8;}
+    .div-text{font-family:'Cormorant Garamond','Dancing Script',Georgia,serif;font-size:17px;font-style:italic;color:#555;letter-spacing:0.5px;line-height:1.85;margin:10px 0;}
+
+    .love-title{font-family:"Dancing Script",cursive;font-size:clamp(40px,10vw,58px);color:var(--primary);text-align:center;}
+
+    /* ===== RESPONSIVE ===== */
+    @media(max-width:768px){
+      .time-box{min-width:68px;padding:8px 10px;}
+      .rope-wrap{width:180px;}
+      .event-title-premium{font-size:28px;}
+      .event-line{font-size:13px;}
+      .event-label{min-width:76px;}
+      .hn-name{font-size:14px;}
+      .hn-amp{font-size:36px;}
+    }
+    @media(max-width:480px){
+      /* On very small phones, stack action cards */
+      .action-card{width:100%;}
+      .ac-title{font-size:14px;}
+      .ac-sub{font-size:11px;}
+      .ac-icon-wrap{width:48px;height:48px;font-size:24px;}
+      .event-line{font-size:13px;}
+      .event-label{min-width:70px;}
+      .section{padding:60px 10px;}
+      .invite-box{padding:24px 12px;}
+    }
+    /* iPhone safe area bottom */
+    @supports(padding:max(0px)){
+      .section:last-child{padding-bottom:max(85px, calc(85px + env(safe-area-inset-bottom)));}
+    }
+  </style>
+</head>
+<body>
+
+<div class="hearts" id="hearts"></div>
+
+<div class="top-actions">
+  <button class="action-btn" onclick="toggleMusic()" id="musicBtn">🎵 Music ON</button>
+  <button class="action-btn" onclick="scrollToSection('invitation')">📜 Details</button>
+</div>
+
+<audio id="bgMusic" loop preload="none" playsinline webkit-playsinline>
+  <source src="aasai.mp3" type="audio/mpeg">
+</audio>
+
+<!-- COVER PAGE -->
+<section class="cover" id="cover">
+  <div class="cover-card">
+    <h1 class="cover-title">Wedding Invitation</h1>
+    <p class="cover-sub">Aravind ❤️ Vidhya</p>
+    <p class="hint">⬇ Drag the rope down to open</p>
+    <div class="progress-text" id="progressText">Pull…</div>
+    <div class="rope-wrap" id="ropeWrap">
+      <div class="rope" id="rope"></div>
+      <div class="pull-ring" id="ring">💍</div>
+    </div>
+  </div>
+</section>
+
+<!-- INVITATION PAGE -->
+<section class="section" id="invitation">
+  <div class="container">
+    <div class="invite-box">
+
+      <div class="divider-subtitle-wrap">
+        <div class="div-line-row"><div class="div-line"></div><div class="div-orn">✿</div><div class="div-line right"></div></div>
+        <p class="div-text">Together with our families, we request the pleasure of your company</p>
+        <div class="div-line-row"><div class="div-line"></div><div class="div-orn">✿</div><div class="div-line right"></div></div>
+      </div>
+
+      <!-- HEARTS PHOTO — Two overlapping 3D hearts like reference image -->
+      <div class="hearts-photo-wrap">
+        <svg class="hearts-svg-area" viewBox="0 0 520 300" xmlns="http://www.w3.org/2000/svg"
+             xmlns:xlink="http://www.w3.org/1999/xlink"
+             style="shape-rendering:geometricPrecision;display:block;width:100%;max-width:600px;margin:0 auto;">
+          <defs>
+            <!-- 3D Red gradient for hearts -->
+            <radialGradient id="gL" cx="38%" cy="28%" r="62%">
+              <stop offset="0%"   stop-color="#ff6680"/>
+              <stop offset="40%"  stop-color="#e8001a"/>
+              <stop offset="100%" stop-color="#7a000e"/>
+            </radialGradient>
+            <radialGradient id="gR" cx="62%" cy="28%" r="62%">
+              <stop offset="0%"   stop-color="#ff6680"/>
+              <stop offset="40%"  stop-color="#e8001a"/>
+              <stop offset="100%" stop-color="#7a000e"/>
+            </radialGradient>
+            <!-- Shine highlight -->
+            <radialGradient id="shineL" cx="32%" cy="22%" r="40%">
+              <stop offset="0%"   stop-color="rgba(255,230,235,0.80)"/>
+              <stop offset="100%" stop-color="rgba(255,80,100,0)"/>
+            </radialGradient>
+            <radialGradient id="shineR" cx="68%" cy="22%" r="40%">
+              <stop offset="0%"   stop-color="rgba(255,230,235,0.80)"/>
+              <stop offset="100%" stop-color="rgba(255,80,100,0)"/>
+            </radialGradient>
+
+            <filter id="dropL" x="-20%" y="-10%" width="150%" height="150%">
+              <feDropShadow dx="6" dy="10" stdDeviation="10" flood-color="rgba(120,0,15,0.45)"/>
+            </filter>
+            <filter id="dropR" x="-20%" y="-10%" width="150%" height="150%">
+              <feDropShadow dx="6" dy="10" stdDeviation="10" flood-color="rgba(120,0,15,0.40)"/>
+            </filter>
+
+            <!-- Heart path helper (centered at 0,0, ~200 wide, 185 tall) -->
+            <!-- Left heart center: 165,130  Right heart center: 325,145 (slightly lower = overlapping) -->
+
+            <!-- LEFT HEART clip for photo (inner region, ~28px inset from outer) -->
+            <clipPath id="clipL">
+              <path d="M165 248
+                C165 248 62 182 62 108
+                C62 62  90 38 120 38
+                C140 38 165 55 165 55
+                C165 55 190 38 210 38
+                C240 38 268 62 268 108
+                C268 182 165 248 165 248Z"/>
+            </clipPath>
+            <!-- RIGHT HEART clip for photo -->
+            <clipPath id="clipR">
+              <path d="M345 258
+                C345 258 248 193 248 120
+                C248 74  275 50 304 50
+                C323 50 345 67 345 67
+                C345 67 367 50 386 50
+                C415 50 442 74 442 120
+                C442 193 345 258 345 258Z"/>
+            </clipPath>
+          </defs>
+
+          <!-- ======= LEFT HEART (Groom) ======= -->
+          <!-- Outer 3D heart -->
+          <path d="M165 262
+            C165 262 50 190 50 108
+            C50 55  82 28 118 28
+            C140 28 165 48 165 48
+            C165 48 190 28 212 28
+            C248 28 280 55 280 108
+            C280 190 165 262 165 262Z"
+            fill="url(#gL)" filter="url(#dropL)"/>
+          <!-- Shine -->
+          <path d="M165 262
+            C165 262 50 190 50 108
+            C50 55  82 28 118 28
+            C140 28 165 48 165 48
+            C165 48 190 28 212 28
+            C248 28 280 55 280 108
+            C280 190 165 262 165 262Z"
+            fill="url(#shineL)"/>
+          <!-- White inset behind photo -->
+          <path d="M165 248
+            C165 248 62 182 62 108
+            C62 62  90 38 120 38
+            C140 38 165 55 165 55
+            C165 55 190 38 210 38
+            C240 38 268 62 268 108
+            C268 182 165 248 165 248Z"
+            fill="white"/>
+          <!-- Groom photo -->
+          <image href="Capture.PNG"
+            x="62" y="38" width="206" height="210"
+            preserveAspectRatio="xMidYMid slice"
+            clip-path="url(#clipL)"/>
+          <!-- Inner border ring -->
+          <path d="M165 248
+            C165 248 62 182 62 108
+            C62 62  90 38 120 38
+            C140 38 165 55 165 55
+            C165 55 190 38 210 38
+            C240 38 268 62 268 108
+            C268 182 165 248 165 248Z"
+            fill="none" stroke="rgba(200,0,20,0.5)" stroke-width="2"/>
+
+          <!-- ======= RIGHT HEART (Bride) — sits slightly lower & overlaps left ======= -->
+          <path d="M345 272
+            C345 272 238 200 238 118
+            C238 65  268 38 300 38
+            C322 38 345 58 345 58
+            C345 58 368 38 390 38
+            C422 38 452 65 452 118
+            C452 200 345 272 345 272Z"
+            fill="url(#gR)" filter="url(#dropR)"/>
+          <!-- Shine -->
+          <path d="M345 272
+            C345 272 238 200 238 118
+            C238 65  268 38 300 38
+            C322 38 345 58 345 58
+            C345 58 368 38 390 38
+            C422 38 452 65 452 118
+            C452 200 345 272 345 272Z"
+            fill="url(#shineR)"/>
+          <!-- White inset -->
+          <path d="M345 258
+            C345 258 248 193 248 120
+            C248 74  275 50 304 50
+            C323 50 345 67 345 67
+            C345 67 367 50 386 50
+            C415 50 442 74 442 120
+            C442 193 345 258 345 258Z"
+            fill="white"/>
+          <!-- Bride photo — same coverage as groom for equal clarity -->
+          <image href="IMG_20260319_142318,jpg-Picsart-AiImageEnhancer.jpeg"
+            x="238" y="38" width="214" height="234"
+            preserveAspectRatio="xMidYMid slice"
+            clip-path="url(#clipR)"/>
+          <!-- Inner border ring -->
+          <path d="M345 258
+            C345 258 248 193 248 120
+            C248 74  275 50 304 50
+            C323 50 345 67 345 67
+            C345 67 367 50 386 50
+            C415 50 442 74 442 120
+            C442 193 345 258 345 258Z"
+            fill="none" stroke="rgba(200,0,20,0.5)" stroke-width="2"/>
+
+          <!-- Scattered mini hearts like reference -->
+          <text x="18"  y="72"  font-size="18" fill="#e8001a" opacity="0.45">♡</text>
+          <text x="470" y="58"  font-size="14" fill="#e8001a" opacity="0.40">♡</text>
+          <text x="28"  y="220" font-size="12" fill="#e8001a" opacity="0.32">♡</text>
+          <text x="460" y="240" font-size="16" fill="#e8001a" opacity="0.38">♡</text>
+          <text x="8"   y="148" font-size="10" fill="#e8001a" opacity="0.25">♡</text>
+          <text x="482" y="150" font-size="11" fill="#e8001a" opacity="0.25">♡</text>
+          <text x="108" y="12"  font-size="10" fill="#e8001a" opacity="0.28">♡</text>
+          <text x="388" y="14"  font-size="12" fill="#e8001a" opacity="0.32">♡</text>
+          <text x="245" y="10"  font-size="9"  fill="#e8001a" opacity="0.22">♡</text>
+          <circle cx="40"  cy="100" r="3"   fill="#ff3355" opacity="0.38"/>
+          <circle cx="55"  cy="52"  r="2"   fill="#ff3355" opacity="0.30"/>
+          <circle cx="472" cy="90"  r="2.5" fill="#ff3355" opacity="0.35"/>
+          <circle cx="455" cy="42"  r="1.8" fill="#ff3355" opacity="0.28"/>
+        </svg>
+
+        <div class="hearts-names-row" style="margin-top:18px;">
+          <div class="hn-box">
+            <span class="hn-name">ARAVIND</span>
+            <span class="hn-role">The Groom</span>
+          </div>
+          <div class="hn-amp" style="font-size:42px;">&amp;</div>
+          <div class="hn-box">
+            <span class="hn-name">VIDHYA</span>
+            <span class="hn-role">The Bride</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Countdown -->
+      <div class="countdown">
+        <div class="time-box"><h2 id="days">00</h2><p>DAYS</p></div>
+        <div class="time-box"><h2 id="hours">00</h2><p>HOURS</p></div>
+        <div class="time-box"><h2 id="minutes">00</h2><p>MINUTES</p></div>
+        <div class="time-box"><h2 id="seconds">00</h2><p>SECONDS</p></div>
+      </div>
+
+      <div class="row g-3 mt-2">
+
+        <div class="col-md-6">
+          <div class="event-card wedding-premium">
+            <div class="event-title-premium">💒 Wedding Ceremony</div>
+            <div class="event-line">
+              <span class="event-label">📅 Date:</span>
+              <span class="event-value">Thursday, 23rd April 2026</span>
+            </div>
+            <div class="event-line">
+              <span class="event-label">⏰ Time:</span>
+              <span class="event-value">7:35 AM – 9:00 AM</span>
+            </div>
+            <div class="event-line">
+              <span class="event-label">📍 Venue:</span>
+              <span class="event-value">ValliMayil Wedding Hall,<br/>Sankaran Kovil, Geethalaya Theatre Road</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="event-card wedding-premium">
+            <div class="event-title-premium">🙏 Invitation Message</div>
+            <p class="message-text">
+              A time to celebrate, a day to remember, a moment to cherish.
+              Our life is getting tuned together in a beautiful &amp; melodious wedlock.
+            </p>
+            <div class="premium-divider"></div>
+            <p class="message-text mb-0">
+              Kindly do come and bless us with your gracious presence.
+            </p>
+          </div>
+        </div>
+
+        <div class="col-12">
+          <div class="event-card text-center">
+            <div class="event-title">🙏 Your Presence is Our Blessing</div>
+            <p class="event-text mb-0">We look forward to celebrating with you and your family.</p>
+          </div>
+        </div>
+
+        <div class="col-12">
+          <div class="action-cards-grid">
+            <a class="action-card ac-map" target="_blank" href="https://maps.app.goo.gl/fm6KMG4VMz38xv1GA">
+              <div class="ac-icon-wrap" style="background:#ffe8ec;">📍</div>
+              <div class="ac-content">
+                <div class="ac-title">View Location</div>
+                <div class="ac-sub">Open in Maps</div>
+              </div>
+              <div class="ac-arrow">›</div>
+            </a>
+            <a class="action-card ac-wa" target="_blank"
+               href="https://wa.me/?text=You%20are%20warmly%20invited%20to%20Aravind%20%26%20Vidhya%20Wedding%20%F0%9F%92%8D%0A%0ADate%3A%2023%20April%202026%20(Thursday)%0ATime%3A%207%3A35%20AM%20-%209%3A00%20AM%0AVenue%3A%20Valli%20Mayil%20Thirumana%20Mandapam%2C%20Sangaran%20Kovil%0A%0ALocation%3A%20https%3A%2F%2Fmaps.app.goo.gl%2Ffm6KMG4VMz38xv1GA">
+              <div class="ac-icon-wrap" style="background:#e0f8ea;">💬</div>
+              <div class="ac-content">
+                <div class="ac-title">WhatsApp Invite</div>
+                <div class="ac-sub">Share with friends</div>
+              </div>
+              <div class="ac-arrow">›</div>
+            </a>
+            <a class="action-card ac-cal" target="_blank" id="googleCalBtn" href="#">
+              <div class="ac-icon-wrap" style="background:#fff0e0;">📅</div>
+              <div class="ac-content">
+                <div class="ac-title">Add to Calendar</div>
+                <div class="ac-sub">Google Calendar</div>
+              </div>
+              <div class="ac-arrow">›</div>
+            </a>
+            <button class="action-card ac-dl" onclick="downloadICS()">
+              <div class="ac-icon-wrap" style="background:#eceeff;">⬇</div>
+              <div class="ac-content">
+                <div class="ac-title">Download .ics</div>
+                <div class="ac-sub">Save to device</div>
+              </div>
+              <div class="ac-arrow">›</div>
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="love">
+  <div class="container">
+    <h2 class="love-title">With Love ❤️</h2>
+    <p class="text-center mt-2" style="max-width:850px;margin:auto;color:#555;line-height:1.7;">
+      Relatives and Friends — Your blessings and presence will make our day truly memorable.
+      Please join us and celebrate this beautiful beginning of our journey together.
+    </p>
+  </div>
+</section>
+
+<script>
+  /* ===== HELPERS ===== */
+  function scrollToSection(id){
+    var el = document.getElementById(id);
+    if(el) el.scrollIntoView({behavior:"smooth"});
+  }
+
+  /* ===== ROPE PULL — iOS touch fixed ===== */
+  var cover = document.getElementById("cover");
+  var rope  = document.getElementById("rope");
+  var ring  = document.getElementById("ring");
+  var progressText = document.getElementById("progressText");
+  var startY = 0, dragging = false;
+  var baseHeight = 220, maxPull = 220, openAt = 180;
+
+  function setPull(px){
+    var pull = Math.max(0, Math.min(px, maxPull));
+    rope.style.height = (baseHeight + pull) + "px";
+    ring.style.webkitTransform = "translateY(" + pull + "px) rotate(" + (pull/18) + "deg)";
+    ring.style.transform = "translateY(" + pull + "px) rotate(" + (pull/18) + "deg)";
+    var pct = Math.floor((pull / openAt) * 100);
+    progressText.innerText = pct >= 100 ? "Release to open 💌" : "Pull… " + pct + "%";
+  }
+  function resetPull(){
+    rope.style.height = baseHeight + "px";
+    ring.style.webkitTransform = "translateY(0px) rotate(0deg)";
+    ring.style.transform = "translateY(0px) rotate(0deg)";
+    progressText.innerText = "Pull…";
+  }
+  function openInvitation(){
+    cover.classList.add("hide");
+    fireworksBurst();
+    setTimeout(function(){
+      var p = bgMusic.play();
+      if(p !== undefined){
+        p.then(function(){
+          musicPlaying = true;
+          musicBtn.innerText = "🔇 Music OFF";
+        }).catch(function(){
+          musicPlaying = false;
+          musicBtn.innerText = "🎵 Music ON";
+        });
+      }
+    }, 600);
+    setTimeout(function(){ scrollToSection("invitation"); }, 750);
+  }
+
+  /* Pointer events — primary for desktop */
+  ring.addEventListener("pointerdown", function(e){
+    dragging = true; startY = e.clientY;
+    try{ ring.setPointerCapture(e.pointerId); }catch(err){}
+  });
+  ring.addEventListener("pointermove", function(e){
+    if(!dragging) return; setPull(e.clientY - startY);
+  });
+  ring.addEventListener("pointerup", function(e){
+    dragging = false;
+    if(e.clientY - startY >= openAt) openInvitation(); else resetPull();
+  });
+  ring.addEventListener("pointercancel", function(){ dragging = false; resetPull(); });
+
+  /* Touch events — for iOS Safari (which may not fully support pointer capture) */
+  ring.addEventListener("touchstart", function(e){
+    e.preventDefault();
+    dragging = true;
+    startY = e.touches[0].clientY;
+  }, {passive:false});
+  ring.addEventListener("touchmove", function(e){
+    e.preventDefault();
+    if(!dragging) return;
+    setPull(e.touches[0].clientY - startY);
+  }, {passive:false});
+  ring.addEventListener("touchend", function(e){
+    e.preventDefault();
+    dragging = false;
+    var endY = e.changedTouches[0].clientY;
+    if(endY - startY >= openAt) openInvitation(); else resetPull();
+  }, {passive:false});
+
+  /* ===== COUNTDOWN ===== */
+  var weddingDate = new Date("2026-04-23T07:35:00").getTime();
+  function updateCountdown(){
+    var diff = weddingDate - new Date().getTime();
+    if(diff <= 0){
+      ["days","hours","minutes","seconds"].forEach(function(id){ document.getElementById(id).innerText="00"; });
+      return;
+    }
+    document.getElementById("days").innerText    = String(Math.floor(diff/(1000*60*60*24))).padStart(2,"0");
+    document.getElementById("hours").innerText   = String(Math.floor((diff%(1000*60*60*24))/(1000*60*60))).padStart(2,"0");
+    document.getElementById("minutes").innerText = String(Math.floor((diff%(1000*60*60))/(1000*60))).padStart(2,"0");
+    document.getElementById("seconds").innerText = String(Math.floor((diff%(1000*60))/1000)).padStart(2,"0");
+  }
+  setInterval(updateCountdown,1000); updateCountdown();
+
+  /* ===== MUSIC — iOS requires user gesture ===== */
+  var musicPlaying = false;
+  var bgMusic = document.getElementById("bgMusic");
+  var musicBtn = document.getElementById("musicBtn");
+  function toggleMusic(){
+    if(!musicPlaying){
+      bgMusic.play().then(function(){
+        musicPlaying = true;
+        musicBtn.innerText = "🔇 Music OFF";
+      }).catch(function(){
+        musicPlaying = false;
+        musicBtn.innerText = "🎵 Music ON";
+      });
+    } else {
+      bgMusic.pause();
+      musicPlaying = false;
+      musicBtn.innerText = "🎵 Music ON";
+    }
+  }
+
+  /* ===== FLOATING HEARTS ===== */
+  var heartsBox = document.getElementById("hearts");
+  var heartIcons = ["❤️","💖","💘","💗","💞","💕"];
+  function createHeart(){
+    var h = document.createElement("div");
+    h.className = "heart";
+    h.innerText = heartIcons[Math.floor(Math.random() * heartIcons.length)];
+    h.style.left = Math.random() * 100 + "vw";
+    h.style.animationDuration = (4 + Math.random() * 4) + "s";
+    h.style.webkitAnimationDuration = h.style.animationDuration;
+    h.style.fontSize = (16 + Math.random() * 18) + "px";
+    heartsBox.appendChild(h);
+    setTimeout(function(){ if(h.parentNode) h.parentNode.removeChild(h); }, 8000);
+  }
+  setInterval(createHeart, 450);
+
+  /* ===== FIREWORKS ===== */
+  function fireworksBurst(){
+    for(var i = 0; i < 18; i++){
+      var s = document.createElement("div");
+      s.className = "spark";
+      s.style.left = (30 + Math.random() * 40) + "vw";
+      s.style.top  = (20 + Math.random() * 30) + "vh";
+      document.body.appendChild(s);
+      (function(el){ setTimeout(function(){ if(el.parentNode) el.parentNode.removeChild(el); }, 1200); })(s);
+    }
+  }
+
+  /* ===== CALENDAR ===== */
+  var calTitle    = encodeURIComponent("Wedding Ceremony - Aravind & Vidhya");
+  var calLocation = encodeURIComponent("ValliMayil Wedding Hall, Sankaran Kovil");
+  var calDetails  = encodeURIComponent("Join us for Aravind & Vidhya Wedding 💍✨");
+  var startUTC = "20260423T020500Z", endUTC = "20260423T033000Z";
+  document.getElementById("googleCalBtn").href =
+    "https://calendar.google.com/calendar/render?action=TEMPLATE&text=" + calTitle +
+    "&dates=" + startUTC + "/" + endUTC +
+    "&details=" + calDetails + "&location=" + calLocation;
+
+  function downloadICS(){
+    var ics = "BEGIN:VCALENDAR\nVERSION:2.0\nCALSCALE:GREGORIAN\nBEGIN:VEVENT\n" +
+      "SUMMARY:Wedding Ceremony - Aravind & Vidhya\n" +
+      "DTSTART:" + startUTC + "\nDTEND:" + endUTC + "\n" +
+      "LOCATION:ValliMayil Wedding Hall, Sankaran Kovil\n" +
+      "DESCRIPTION:Join us for the wedding celebration 💍✨\n" +
+      "STATUS:CONFIRMED\nSEQUENCE:0\nEND:VEVENT\nEND:VCALENDAR";
+    var blob = new Blob([ics], {type:"text/calendar;charset=utf-8"});
+    var url  = URL.createObjectURL(blob);
+    var link = document.createElement("a");
+    link.href = url;
+    link.download = "Aravind-Vidhya-Wedding.ics";
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    setTimeout(function(){ URL.revokeObjectURL(url); }, 1000);
+  }
+</script>
+</body>
+</html>
